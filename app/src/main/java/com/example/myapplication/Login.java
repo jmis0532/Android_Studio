@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        textInputEditTextUsername = findViewById(R.id.username_textview);
+        textInputEditTextUsername = findViewById(R.id.account_textview);
         textInputEditTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.buttonLogin);
         textViewSignUp = findViewById(R.id.signUpText);
@@ -77,17 +77,28 @@ public class Login extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
 
 
-                                    String result = putData.getResult();
+                                    String result1 = putData.getResult();
                                     Intent intent = null;
-                                    if (result.equals("Username or Password wrong")) {
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                    } else if (result.equals("Error: Database connection")) {
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                    if (result1.equals("Username or Password wrong")) {
+                                        Toast.makeText(getApplicationContext(), result1, Toast.LENGTH_SHORT).show();
+                                    } else if (result1.equals("Error: Database connection")) {
+                                        Toast.makeText(getApplicationContext(), result1, Toast.LENGTH_SHORT).show();
                                     } else {
+
+                                        PutData putData1 = new PutData("http://114.32.40.112/LoginRegister/GetData.php", "POST", field, data);
+                                        putData1.startPut();
+                                        putData1.onComplete();
+                                        String result2 = putData1.getResult();
+
                                         intent = new Intent(getApplicationContext(), Account.class);
-                                        intent.putExtra("account_box", result);
                                         intent.putExtra("username_box", username);
+                                        intent.putExtra("account_box", result1);
+                                        intent.putExtra("blance_box", result2);
                                         startActivity(intent);
+
+
+
+
                                     }
 
                                 }
