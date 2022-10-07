@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        textInputEditTextUsername = findViewById(R.id.username);
+        textInputEditTextUsername = findViewById(R.id.username_textview);
         textInputEditTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.buttonLogin);
         textViewSignUp = findViewById(R.id.signUpText);
@@ -69,19 +69,29 @@ public class Login extends AppCompatActivity {
                             data[1] = password;
 
                             PutData putData = new PutData("http://114.32.40.112/LoginRegister/login.php", "POST", field, data);
+
+
+
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     progressBar.setVisibility(View.GONE);
+
+
                                     String result = putData.getResult();
-                                    if (result.equals("Login Success")) {
+                                    Intent intent = null;
+                                    if (result.equals("Username or Password wrong")) {
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
+                                    } else if (result.equals("Error: Database connection")) {
+                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                        intent = new Intent(getApplicationContext(), Account.class);
+                                        intent.putExtra("account_box", result);
+                                        intent.putExtra("username_box", username);
+                                        startActivity(intent);
                                     }
+
                                 }
+
                             }
 
                         }
@@ -89,6 +99,7 @@ public class Login extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "All fields required", Toast.LENGTH_SHORT).show();
+
                 }
 
             }
