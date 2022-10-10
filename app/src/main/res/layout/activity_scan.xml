@@ -18,10 +18,11 @@
 
     <TextView
         android:id="@+id/textView_Result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wait for scan"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/poppinsbold"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

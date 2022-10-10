@@ -53,7 +53,7 @@ public class Account extends AppCompatActivity {
         //String scan_result = intent.getStringExtra("scanResult_box");
 
 
-        String blance1 = mDecimalFormat.format(Double.parseDouble(blance));
+        String blance1 = mDecimalFormat.format(Double.parseDouble(blance));//======金錢小數點
 
 
         TextView username_textview = findViewById(R.id.username_textview);
