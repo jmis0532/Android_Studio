@@ -18,6 +18,7 @@ public class Account extends AppCompatActivity {
     TextView blance_textview;
     Button btn_qr;
     Button btn_scan;
+    Button btn_send;
 
 
     @Override
@@ -27,6 +28,7 @@ public class Account extends AppCompatActivity {
 
         btn_qr = findViewById(R.id.btn_qr);
         btn_scan =  findViewById(R.id.btn_scan);
+        btn_send = findViewById(R.id.btn_send);
 
         DecimalFormat mDecimalFormat = new DecimalFormat("#,###");
 
@@ -57,7 +59,7 @@ public class Account extends AppCompatActivity {
                 String account1 = account;
                 intent.putExtra("account_box1",account1);
                 startActivity(intent);
-
+                finish();
             }
         });
 
@@ -67,6 +69,15 @@ public class Account extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(),Scan.class);
                 startActivity(intent);
+
+            }
+        });
+
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
 
             }
         });
