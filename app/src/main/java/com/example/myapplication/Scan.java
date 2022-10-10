@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +19,9 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class Scan extends AppCompatActivity implements ZXingScannerView.ResultHandler{
 
     ZXingScannerView zXingScannerView;
+
+    private static final int REQUEST_CODE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +69,17 @@ public class Scan extends AppCompatActivity implements ZXingScannerView.ResultHa
         TextView tvResult = findViewById(R.id.textView_Result);
         tvResult.setText(rawResult.getText());
         //ZXing相機預設掃描到物件後就會停止，以此這邊再次呼叫開啟，使相機可以為連續掃描之狀態
-        openQRCamera();
+
+        String scanResult = rawResult.getText();
+
+
+
+        Intent intent = getIntent();//new Intent(getApplicationContext(),Account.class);
+        intent.putExtra("scanResult_box",scanResult);
+        setResult(REQUEST_CODE,intent);
+        //onStop();
+        finish();
+        //openQRCamera();
     }
 }
 

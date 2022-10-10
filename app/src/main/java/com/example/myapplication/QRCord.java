@@ -14,7 +14,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class QRCord extends AppCompatActivity {
 
-    TextView account_qr;
+    //TextView account_qr;
     //Button button;
 
     @Override
@@ -32,6 +32,8 @@ public class QRCord extends AppCompatActivity {
 
         //Button btn=(Button)findViewById(R.id.button);
         //btn.setOnClickListener(this);
+
+
     }
 
     public void getCode(){
@@ -49,10 +51,12 @@ public class QRCord extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //Log.i("123", "onKeyDown: 返回");
+    }
 
-    //@Override
-    //public void onClick(View v) {
-    //    getCode();
 
 
 }
