@@ -122,17 +122,22 @@ public class Account extends AppCompatActivity {
 
                 String my_account1 = String.valueOf(account_textview.getText());
                 String send_account1 = String.valueOf(send_textview.getText());
-                //String value3 = String.valueOf(pay_textview.getText());
+                String value3 = String.valueOf(pay_textview.getText());
                 //String value1 = blance_textview.getText().toString();
-                int blance1_int = Integer.parseInt(blance);
-                String value2 = pay_textview.getText().toString();
-                int payment_int = Integer.parseInt(value2);
-
-                String q = String.valueOf(payment_int);
+                //int blance1_int = Integer.parseInt(blance);
+                //String value2 = pay_textview.getText().toString();
+                //int payment_int = Integer.parseInt(value2);
 
 
-                    response_textview.setText(q);
+                if(!send_account1.equals("")) {
 
+                    //String q = String.valueOf(payment_int);
+                    response_textview.setText(send_account1);
+
+
+                }else{
+                     response_textview.setText("send account or payment cant be empty!");
+                }
                 //Intent intent = new Intent(getApplicationContext(),Account.class);
                 //startActivity(intent);
 
