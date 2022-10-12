@@ -123,17 +123,36 @@ public class Account extends AppCompatActivity {
                 String my_account1 = String.valueOf(account_textview.getText());
                 String send_account1 = String.valueOf(send_textview.getText());
                 String value3 = String.valueOf(pay_textview.getText());
-                //String value1 = blance_textview.getText().toString();
-                //int blance1_int = Integer.parseInt(blance);
-                //String value2 = pay_textview.getText().toString();
-                //int payment_int = Integer.parseInt(value2);
 
-
-                if(!send_account1.equals("")) {
+                if(!send_account1.equals("") && !value3.equals("")) {
 
                     //String q = String.valueOf(payment_int);
-                    response_textview.setText(send_account1);
+                    //response_textview.setText(send_account1);
 
+                    String value1 = blance_textview.getText().toString();
+                    int blance1_int = Integer.parseInt(blance);
+                    String value2 = pay_textview.getText().toString();
+                    int payment_int = Integer.parseInt(value2);
+
+                    if ((payment_int != 0 && blance1_int != 0)) {
+
+                        if(payment_int <= blance1_int){
+
+
+                            response_textview.setText(send_account1);
+
+
+
+
+                        }else{
+
+                            response_textview.setText("payment cant > blance!");
+
+                        }
+
+                    }else{
+                        response_textview.setText("payment or blance cant be 0!");
+                    }
 
                 }else{
                      response_textview.setText("send account or payment cant be empty!");
