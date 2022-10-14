@@ -107,68 +107,92 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Handler handler = new Handler();
+                handler.post(new Runnable() {
+                @Override
+                public void run() {
 
-                TextView response_textview = findViewById(R.id.response_textview);
+                    TextView response_textview = findViewById(R.id.response_textview);
 
-
-
-                String[] account_data = new String[2];
-                account_data[0] = "account";
-                account_data[1] = "blance";
-
-                String[] account_data1 = new String[2];
-                account_data1[0] = account;
-                account_data1[1] = blance;
-
-                String my_account1 = String.valueOf(account_textview.getText());
-                String send_account1 = String.valueOf(send_textview.getText());
-                String value3 = String.valueOf(pay_textview.getText());
-
-                if(!send_account1.equals("") && !value3.equals("")) {
-
-                    //String q = String.valueOf(payment_int);
-                    //response_textview.setText(send_account1);
-
-                    String value1 = blance_textview.getText().toString();
-                    int blance1_int = Integer.parseInt(blance);
-                    String value2 = pay_textview.getText().toString();
-                    int payment_int = Integer.parseInt(value2);
-
-                    if ((payment_int != 0 && blance1_int != 0)) {
-
-                        if(payment_int <= blance1_int){
+                    String my_account1 = String.valueOf(account_textview.getText());
+                    String send_account1 = String.valueOf(send_textview.getText());
+                    String value3 = String.valueOf(pay_textview.getText());
 
 
-                            response_textview.setText(send_account1);
+                    if (!send_account1.equals("") && !value3.equals("")) {
+
+                        //String q = String.valueOf(payment_int);
+                        //response_textview.setText(send_account1);
+
+                        String value1 = blance_textview.getText().toString();
+                        int blance1_int = Integer.parseInt(blance);
+                        String value2 = pay_textview.getText().toString();
+                        int payment_int = Integer.parseInt(value2);
+
+                        if ((payment_int != 0 && blance1_int != 0)) {
+
+                            if (payment_int <= blance1_int) {
+
+                                //String account5 =  my_account1;
+                                String[] send_account_data = new String[2];
+                                send_account_data[0] = "account1";
+                                send_account_data[1] = "blance1";
+
+                                String[] send_account_data1 = new String[2];
+                                send_account_data1[0] = send_account1;
+                                send_account_data1[1] = value3;
 
 
+                                String[] account_data = new String[2];
+                                account_data[0] = "account";
+                                account_data[1] = "blance";
 
+                                String[] account_data1 = new String[2];
+                                account_data1[0] = account;
+                                account_data1[1] = blance;
 
-                        }else{
+                                PutData putData3 = new PutData("http://114.32.40.112/LoginRegister/Payout.php", "POST", send_account_data, send_account_data1);
+                                PutData putData4 = new PutData("http://114.32.40.112/LoginRegister/Payout.php", "POST", account_data, account_data1);
+                                putData3.startPut();
+                                putData4.startPut();
+                                putData3.onComplete();
+                                putData4.onComplete();
 
-                            response_textview.setText("payment cant > blance!");
+                                String result3 = putData3.getResult();
+                                String result4 = putData4.getResult();
 
+                                //String a = account_data1[1];
+
+                                Toast.makeText(getApplicationContext(), result3, Toast.LENGTH_SHORT).show();
+                                response_textview.setText(result3);
+
+                            } else {
+
+                                response_textview.setText("payment cant > blance!");
+
+                            }
+
+                        } else {
+                            response_textview.setText("payment or blance cant be 0!");
                         }
 
-                    }else{
-                        response_textview.setText("payment or blance cant be 0!");
+                    } else {
+                        response_textview.setText("send account or payment cant be empty!");
                     }
+                    //Intent intent = new Intent(getApplicationContext(),Account.class);
+                    //startActivity(intent);
 
-                }else{
-                     response_textview.setText("send account or payment cant be empty!");
-                }
-                //Intent intent = new Intent(getApplicationContext(),Account.class);
-                //startActivity(intent);
-
-                //PutData putData = new PutData("http://114.32.40.112/LoginRegister/Payout.php", "POST", account_data, send_account1);
+                    //PutData putData = new PutData("http://114.32.40.112/LoginRegister/Payout.php", "POST", account_data, send_account1);
 
 
+                    //Toast.makeText(getApplicationContext(), (int) q, Toast.LENGTH_SHORT).show();
+                }//run
 
-
-                       //Toast.makeText(getApplicationContext(), (int) q, Toast.LENGTH_SHORT).show();
-
+                });
 
                 }//onClick(View v)
+
+
 
 
 
