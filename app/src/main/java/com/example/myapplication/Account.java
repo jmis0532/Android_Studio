@@ -133,39 +133,71 @@ public class Account extends AppCompatActivity {
 
                             if (payment_int <= blance1_int) {
 
-                                //String account5 =  my_account1;
-                                String[] send_account_data = new String[2];
-                                send_account_data[0] = "account1";
-                                send_account_data[1] = "blance1";
 
-                                String[] send_account_data1 = new String[2];
-                                send_account_data1[0] = send_account1;
-                                send_account_data1[1] = value3;
+                                String[] chk_send_account_data = new String[2];
+                                chk_send_account_data[0] = "account";
+                                chk_send_account_data[1] = "payment";
+
+                                String[] chk_send_account_data1 = new String[2];
+                                chk_send_account_data1[0] = send_account1;
+                                chk_send_account_data1[1] = value2;
+
+                                PutData putData5 = new PutData("http://114.32.40.112/LoginRegister/chk_sed_account.php", "POST", chk_send_account_data, chk_send_account_data1);
+                                putData5.startPut();
+                                putData5.onComplete();
+                                String result5 = putData5.getResult();
 
 
-                                String[] account_data = new String[2];
-                                account_data[0] = "account";
-                                account_data[1] = "blance";
+                                //Toast.makeText(getApplicationContext(), result5, Toast.LENGTH_SHORT).show();
 
-                                String[] account_data1 = new String[2];
-                                account_data1[0] = account;
-                                account_data1[1] = blance;
+                                    if(!result5.equals("")) {
 
-                                PutData putData3 = new PutData("http://114.32.40.112/LoginRegister/Payout.php", "POST", send_account_data, send_account_data1);
-                                PutData putData4 = new PutData("http://114.32.40.112/LoginRegister/Payout.php", "POST", account_data, account_data1);
-                                putData3.startPut();
-                                putData4.startPut();
-                                putData3.onComplete();
-                                putData4.onComplete();
 
-                                String result3 = putData3.getResult();
-                                String result4 = putData4.getResult();
+                                        //String account5 =  my_account1;
+                                        String[] my_account_data = new String[2];
+                                        my_account_data[0] = "account";
+                                        my_account_data[1] = "payment";
 
-                                //String a = account_data1[1];
+                                        String[] my_account_data1 = new String[2];
+                                        my_account_data1[0] = my_account1;
+                                        my_account_data1[1] = value2;
 
-                                Toast.makeText(getApplicationContext(), result3, Toast.LENGTH_SHORT).show();
-                                response_textview.setText(result3);
 
+                                        String[] send_account_data = new String[2];
+                                        send_account_data[0] = "account";
+                                        send_account_data[1] = "payment";
+
+                                        String[] send_account_data1 = new String[2];
+                                        send_account_data1[0] = send_account1;
+                                        send_account_data1[1] = value2;
+
+                                        PutData putData3 = new PutData("http://114.32.40.112/LoginRegister/Payout.php", "POST", my_account_data, my_account_data1);
+
+                                        putData3.startPut();
+                                        putData3.onComplete();
+                                        String result3 = putData3.getResult();
+
+                                        String result3_d = mDecimalFormat.format(Double.parseDouble(result3));
+
+                                        blance_textview.setText(result3_d);
+
+                                        PutData putData4 = new PutData("http://114.32.40.112/LoginRegister/GetPayment.php", "POST", send_account_data, send_account_data1);
+
+                                        putData4.startPut();
+                                        putData4.onComplete();
+                                        String result4 = putData4.getResult();
+
+                                        send_textview.setText("");
+                                        pay_textview.setText("");
+
+
+                                        //Toast.makeText(getApplicationContext(), result4, Toast.LENGTH_SHORT).show();
+                                        response_textview.setText(result4);
+
+
+                                    }else {
+                                        response_textview.setText("send account error!");
+                                    }
                             } else {
 
                                 response_textview.setText("payment cant > blance!");
