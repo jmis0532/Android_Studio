@@ -35,4 +35,14 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.6" />
 
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GO BACK"
+        app:layout_constraintBottom_toTopOf="@+id/textView_Result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ZXingScannerView_QRCode" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

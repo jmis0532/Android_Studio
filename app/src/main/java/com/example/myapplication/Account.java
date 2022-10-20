@@ -30,7 +30,7 @@ public class Account extends AppCompatActivity {
 
 
     protected void onActivityResult(int requestCode,int resultCode, Intent data){
-        //super.onActivityResult(resultCode, resultCode,data);
+        super.onActivityResult(resultCode, resultCode,data);
         switch(requestCode){
             case REQUEST_CODE:
                 String scan_result = data.getStringExtra("scanResult_box");

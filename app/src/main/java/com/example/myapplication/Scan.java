@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import com.google.zxing.Result;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class Scan extends AppCompatActivity implements ZXingScannerView.ResultHandler{
+
+    Button back_button;
 
     ZXingScannerView zXingScannerView;
 
@@ -39,6 +43,18 @@ public class Scan extends AppCompatActivity implements ZXingScannerView.ResultHa
             openQRCamera();
 
     }
+        back_button = findViewById(R.id.back_button);
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = getIntent();
+                intent.putExtra("scanResult_box","scan nothing");
+                setResult(REQUEST_CODE,intent);
+                finish();
+
+            }
+        });
 }
     /**開啟QRCode相機*/
     private void openQRCamera() {
@@ -74,7 +90,7 @@ public class Scan extends AppCompatActivity implements ZXingScannerView.ResultHa
 
 
 
-        Intent intent = getIntent();//new Intent(getApplicationContext(),Account.class);
+        Intent intent = getIntent();
         intent.putExtra("scanResult_box",scanResult);
         setResult(REQUEST_CODE,intent);
         //onStop();
