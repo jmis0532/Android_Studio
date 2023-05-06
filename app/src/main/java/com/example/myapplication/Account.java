@@ -24,6 +24,7 @@ public class Account extends AppCompatActivity {
     Button btn_qr;
     Button btn_scan;
     Button btn_send;
+    //Button btn_mining;
 
     private static final int REQUEST_CODE = 1;
 
