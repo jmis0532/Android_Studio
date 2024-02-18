@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package my.platelet.wallet;
 
 import android.Manifest;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package my.platelet.wallet;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -71,7 +71,7 @@ public class SignUp extends AppCompatActivity {
                             data[1] = username;
                             data[2] = password;
                             data[3] = email;
-                            PutData putData = new PutData("http://114.32.40.112/LoginRegister/signup.php", "POST", field, data);
+                            PutData putData = new PutData("http://114.34.28.18/LoginRegister/signup.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     progressBar.setVisibility(View.GONE);

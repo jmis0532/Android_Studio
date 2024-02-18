@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package my.platelet.wallet;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,11 +6,10 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.textfield.TextInputEditText;
+import my.platelet.wallet.R;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.text.DecimalFormat;
@@ -143,7 +142,7 @@ public class Account extends AppCompatActivity {
                                 chk_send_account_data1[0] = send_account1;
                                 chk_send_account_data1[1] = value2;
 
-                                PutData putData5 = new PutData("http://114.32.40.112/LoginRegister/chk_sed_account.php", "POST", chk_send_account_data, chk_send_account_data1);
+                                PutData putData5 = new PutData("http://114.34.28.18/LoginRegister/chk_sed_account.php", "POST", chk_send_account_data, chk_send_account_data1);
                                 putData5.startPut();
                                 putData5.onComplete();
                                 String result5 = putData5.getResult();
@@ -172,7 +171,7 @@ public class Account extends AppCompatActivity {
                                         send_account_data1[0] = send_account1;
                                         send_account_data1[1] = value2;
 
-                                        PutData putData3 = new PutData("http://114.32.40.112/LoginRegister/Payout.php", "POST", my_account_data, my_account_data1);
+                                        PutData putData3 = new PutData("http://114.34.28.18/LoginRegister/Payout.php", "POST", my_account_data, my_account_data1);
 
                                         putData3.startPut();
                                         putData3.onComplete();
@@ -182,7 +181,7 @@ public class Account extends AppCompatActivity {
 
                                         blance_textview.setText(result3_d);
 
-                                        PutData putData4 = new PutData("http://114.32.40.112/LoginRegister/GetPayment.php", "POST", send_account_data, send_account_data1);
+                                        PutData putData4 = new PutData("http://114.34.28.18/LoginRegister/GetPayment.php", "POST", send_account_data, send_account_data1);
 
                                         putData4.startPut();
                                         putData4.onComplete();

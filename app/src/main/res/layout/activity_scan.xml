@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scan">
+    tools:context="my.platelet.wallet.Scan">
 
     <me.dm7.barcodescanner.zxing.ZXingScannerView
         android:id="@+id/ZXingScannerView_QRCode"

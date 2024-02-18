@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package my.platelet.wallet;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -68,7 +68,7 @@ public class Login extends AppCompatActivity {
                             data[0] = username;
                             data[1] = password;
 
-                            PutData putData = new PutData("http://114.32.40.112/LoginRegister/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://114.34.28.18/LoginRegister/login.php", "POST", field, data);
 
 
 
@@ -85,7 +85,7 @@ public class Login extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), result1, Toast.LENGTH_SHORT).show();
                                     } else {
 
-                                        PutData putData1 = new PutData("http://114.32.40.112/LoginRegister/GetData.php", "POST", field, data);
+                                        PutData putData1 = new PutData("http://114.34.28.18/LoginRegister/GetData.php", "POST", field, data);
                                         putData1.startPut();
                                         putData1.onComplete();
                                         String result2 = putData1.getResult();

@@ -11,35 +11,35 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Summers_testAPP"
+        android:label="Platelet Wallet"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".QRCord"
+            android:name="my.platelet.wallet.QRCord"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Account"
+            android:name="my.platelet.wallet.Account"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Scan"
+            android:name="my.platelet.wallet.Scan"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Login"
+            android:name="my.platelet.wallet.Login"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
@@ -49,10 +49,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUp"
+            android:name="my.platelet.wallet.SignUp"
             android:exported="false"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity android:name=".MainActivity" />
+        <activity android:name="my.platelet.wallet.MainActivity" />
     </application>
 
 </manifest>

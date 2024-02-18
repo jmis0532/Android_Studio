@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package my.platelet.wallet;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;

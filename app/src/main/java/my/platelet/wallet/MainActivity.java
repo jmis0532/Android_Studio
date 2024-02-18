@@ -1,8 +1,8 @@
-package com.example.myapplication;
-
-import androidx.appcompat.app.AppCompatActivity;
+package my.platelet.wallet;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
